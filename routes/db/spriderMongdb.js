@@ -8,7 +8,7 @@ var ajkSchema=new mongoose.Schema({
     locals:String,
     price:String,
  });
-var userSchema=new mongoose.Schema({
+/*var userSchema=new mongoose.Schema({
     password:String,
     email:String,
     registerDate:String,
@@ -25,5 +25,5 @@ var testSchema = new mongoose.Schema({
     name:String,
     age:String,
     test:String,
-})
+})*/
 exports.AJK = mongoose.model("buildingInfo", ajkSchema,'buildingInfo'); //  与users集合关联

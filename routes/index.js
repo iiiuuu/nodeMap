@@ -7,23 +7,16 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 router.get('/getInfo',function (req,res,next) {
- var query = AJK.find({});
+ var query = AJK.find({},{_id:0,locals:1})
   query.exec(function(err, data) {
-    console.log(data);
+    var dataNewList= data.map(function (x) {
+          return x.locals;})
+    console.log(dataNewList);
     if (!err) {
-      res.render("index",{status:200,dataList:data});
+      res.end(JSON.stringify({status:200,dataList:dataNewList}));
     } else {
-      res.render("index",{status:500,dataList:null});
+      res.end(JSON.stringify({status:false,dataList:null}))
     }
   });
-/*  var test=new AJK({
-    user:"test",
-    name:String,
-    age:String,
-    test:String,
-  })
-  test.save(function (err) {
-    console.log('save status:'+err);
-  })*/
 });
 module.exports = router;
